@@ -55,7 +55,11 @@ export function getLanguage(versionPragmas: string[]): Language {
 
   if (slangVersion === null) {
     throw new Error(
-      `No supported solidity version found. Supported versions: ${supportedVersions}, pragma directives: ${versionPragmas}`
+      `No supported solidity version found. Supported versions: (>= ${
+        supportedVersions[0]
+      }, <= ${
+        supportedVersions[supportedVersions.length - 1]
+      }), pragma directives: ${versionPragmas}`
     );
   }
   return new Language(slangVersion);
